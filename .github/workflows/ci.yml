@@ -18,6 +18,7 @@ jobs:
           
       - name: Success
         run: (exit 0)
+
   style:
     name: Style
     runs-on: ubuntu-latest
@@ -28,6 +29,12 @@ jobs:
 
       - name: Check Formatting
         run: go test -z $(go fmt ./...)
+      
+      - name: Install Linter
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+
+      - name: Check Linting
+        run: go test -z $(staticcheck ./...)
       
       - name: Success
         run: (exit 0)
