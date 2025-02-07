@@ -14,8 +14,10 @@ jobs:
         run: go test -cover ./...
       - name: Install gosec
         run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      - name: Add GOPATH/bin to PATH  # Correct way to set PATH in GitHub Actions
+        run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Check Security
-        run: gosec ./..
+        run: gosec ./...
 
   style:
     name: Style
