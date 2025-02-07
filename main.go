@@ -102,7 +102,3 @@ func unused() {
     // and is called nowhere
 }
 
-func unused() {
-    // this function does nothing
-    // and is called nowhere
-}
