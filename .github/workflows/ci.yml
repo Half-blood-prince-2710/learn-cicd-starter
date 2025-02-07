@@ -18,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Linter
+     
+      - name: Check Formatting
+        run: test -z $(go fmt ./...)
+       - name: Install Linter
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
       - name: Add GOPATH/bin to PATH  # Correct way to set PATH in GitHub Actions
         run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
-      - name: Check Formatting
-        run: test -z $(go fmt ./...)
       - name: Check Linting
         run: test -z $(staticcheck ./...)
