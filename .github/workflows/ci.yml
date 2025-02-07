@@ -25,4 +25,4 @@ jobs:
       - name: Add GOPATH/bin to PATH  # Correct way to set PATH in GitHub Actions
         run: echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: Check Linting
-        run: go test -z $(staticcheck ./...)
+        run: staticcheck ./...
