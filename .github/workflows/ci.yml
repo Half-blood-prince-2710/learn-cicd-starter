@@ -18,4 +18,13 @@ jobs:
           
       - name: Success
         run: (exit 0)
-    
+  styles:
+    name: Styles
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Formatting
+        run: go test -z $(go fmt ./...)
+      
+      - name: Success
+        run: (exit 0)
